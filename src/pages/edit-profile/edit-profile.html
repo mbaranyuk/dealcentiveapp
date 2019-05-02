@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>EditProfile</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form (ngSubmit)="editProfile(ModelForm)" #ModelForm="ngForm">
+    <h4 (click)="showInfoTap()">Common Info</h4>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="profile.first_name" name="Name" required min="3" max="30"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Last Name</ion-label>
+      <ion-input type="text" [(ngModel)]="profile.last_name" name="LastName" required min="3" max="30"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="profile.email" name="Email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2}$"></ion-input>
+    </ion-item>
+
+    <h4>Mailing Address</h4>
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-input type="text" [(ngModel)]="profile.address" name="Address"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>City</ion-label>
+      <ion-input type="text" [(ngModel)]="profile.city" name="City"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>State</ion-label>
+      <ion-input type="text" [(ngModel)]="profile.state" name="State"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Zip</ion-label>
+      <ion-input type="text" [(ngModel)]="profile.zip" name="Zip"></ion-input>
+    </ion-item>
+
+    <button class="blue-button-main" ion-button type="submit" style="margin-top: 30px;" block [disabled]="ModelForm.invalid">Save</button>
+  </form>
+</ion-content>

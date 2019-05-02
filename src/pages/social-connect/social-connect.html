@@ -1,0 +1,15 @@
+<ion-content no-margin>
+  <ion-slides padding>
+    <ion-slide *ngFor="let link of socialLinks">
+      <button ion-button icon-start block (click)="socialConnect(link)"
+        [color]="link.connected ? 'secondary' : 'light'">
+        <ion-icon [name]="link.icon"></ion-icon>
+        {{link.name}}
+    </button>
+      <button style="margin-top: 20px;" ion-button block (click)="goNextLink()" class="blue-button-main">
+        Skip
+      </button>
+    </ion-slide>
+  
+  </ion-slides>
+</ion-content>

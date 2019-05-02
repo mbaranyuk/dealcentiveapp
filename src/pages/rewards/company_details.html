@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{company.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <p class="points-header">Available Points: {{company.points}}</p>
+  <ion-row class="reward-col-wrapper">
+    <div class="reward-col" (click)="openNavDetailsPage(gift)" *ngFor="let gift of gifts">
+      <div class="reward-col__image">
+          <img src="{{gift.image}}" alt="">
+      </div>
+      <p class="reward-col__title">{{ gift.title }}</p>
+      <span class="reward-col__price">Points: {{ gift.points }}</span>
+    </div>
+    <div *ngIf="loading" class="not-found" style="width: 100%">
+        <p text-center>Loading Rewards...</p>
+      </div>
+    <div *ngIf="!loading && gifts && gifts.length == 0" class="not-found" style="width: 100%">
+      <p text-center>Rewards not found</p>
+    </div>
+  </ion-row>
+  <ion-list-header *ngIf="gifts.length === 0 && !loading" text-center>
+    <p>This company has no gift options</p>
+  </ion-list-header>
+</ion-content>

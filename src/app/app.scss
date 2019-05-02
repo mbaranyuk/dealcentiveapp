@@ -1,0 +1,111 @@
+$bg-lightgray: #f3f3f3;
+.not-found{
+    margin-top: 30px;
+}
+// Sidemenu
+.menu__page{
+    .page__subpage{
+         border: none;
+         margin-left: 10px;
+         font-size: 90%;
+    }
+}
+.scroll-content {
+    background-color: $bg-lightgray;
+}
+$bg-blue: #189cdc;
+$col-white: #fff;
+
+.blue-button-main{
+    background-color: $bg-blue !important;
+}
+// [ TOOLBAR ]
+.header-ios {
+    padding-top: 20px;
+    background-color: $bg-blue;
+}
+
+// [ HEADERS ]
+ion-header {
+    .toolbar-background {
+        background-color: $bg-blue;
+    }
+    .toolbar-title {
+        color: $col-white;
+    }
+    .toolbar-title, .toolbar ion-icon {
+        color: $col-white;
+    }
+    .toolbar .back-button-text, .toolbar button {
+        color: $col-white;
+    }
+
+}
+
+// Custom Devcentive icons
+ion-icon {
+    &[class*="dealcentive-"] {
+        mask-size: 100%;
+        // mask-position: -50% -50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+        width: 1em;
+        height: 1em;
+    }
+    // custom icons [ Navigation ]
+    &[class*="dealcentive-featured"] {
+        mask-image: url(../assets/icon/NavIcons/Featured.svg);
+    }
+    &[class*="dealcentive-search"] {
+        mask-image: url(../assets/icon/NavIcons/SearchGray.svg);
+    }
+    &[class*="dealcentive-notification"] {
+        mask-image: url(../assets/icon/NavIcons/Notification.svg);
+    }
+    &[class*="dealcentive-saved"] {
+        mask-image: url(../assets/icon/NavIcons/Saved.svg);
+    }
+    &[class*="dealcentive-myStuff"] {
+        // mask-image: url(../assets/icon/NavIcons/myStuff.svg);
+        mask-image: url(../assets/icon/NavIcons/MyStuff.svg);
+    }
+
+    // [ Action ]
+    &[class*="dealcentive-plane"] {
+        mask-image: url(../assets/icon/IconWithAction/Plane.svg);
+    }
+
+
+    // [ General ]
+    &[class*="dealcentive-cart"] {
+        mask-image: url(../assets/icon/GeneralIcons/Cart.svg);
+    }
+
+    &[class*="dealcentive-wifi-off"] {
+        mask-image: url(../assets/icon/Material/baseline-signal_wifi_off-24px.svg);
+    }
+    // [Social Logos]
+    &[class*="dealcentive-sms"] {
+        mask-image: url(../assets/icon/Material/baseline-textsms-24px.svg);
+    }
+    &[class*="dc-fb"] {
+        mask-image: url(../assets/icon/SocialIcons/Fb.svg);
+        // background-image: url(./assets/icon/SocialIcons/Fb.svg);
+    }
+    &[class*="dealcentive-twitter"] {
+        mask-image: url(../assets/icon/SocialIcons/Twitter.png);
+        // background-image: url(../assets/icon/SocialIcons/Twitter.svg);
+    }
+    &[class*="dc-dollar"] {
+        mask-image: url(../assets/icon/SocialIcons/Dollar.png);
+    }
+    &[class*="dc-linkedin"] {
+        mask-image: url(../assets/icon/SocialIcons/Linkedin.svg);
+    }
+    &[class*="dc-whatsapp"] {
+        mask-image: url(../assets/icon/SocialIcons/Whatsapp.svg);
+    }
+    &[class*="dc-email"] {
+        mask-image: url(../assets/icon/SocialIcons/Gmail.svg);
+    }
+}

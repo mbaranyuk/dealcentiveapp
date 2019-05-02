@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+        <button ion-button large icon-only (click)="navCtrl.pop()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>Connect {{ (settings && settings.title)? settings.title : '' }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="preshare--content" padding>
+    <p>You need connect {{ (settings && settings.title)? settings.title : '' }} network to be able for share</p>
+    <button ion-button block (click)="connectSocial()" class="blue-button-main"> {{(loading)? 'Processing...' : 'Connect'}} </button>
+  </div>
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header></ion-header>
+<ion-content no-margin>
+  <div class="auth-content" padding>
+    <ion-grid style="height: 100%;">
+      <ion-row>
+        <div class="auth-header" padding>
+          <h2>{{screanTitle}}</h2>
+        </div>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col padding text-center col-sm-3>
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="code1" [autofocus]="activeField==0" (keyup)="changeField($event)"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col padding text-center col-sm-3>
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="code2" [autofocus]="activeField==1" (keyup)="changeField($event)"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col padding text-center col-sm-3>
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="code3" [autofocus]="activeField==2" (keyup)="changeField($event)"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col padding text-center col-sm-3>
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="code4" [autofocus]="activeField==3" (keyup)="changeField($event)" ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <button style="margin-top: 50px;" ion-button block (click)="getAccessToken()"
+    [disabled]="!code1 || !code2 || !code3 || !code4" [autofocus]="!!code4" class="blue-button-main">
+      {{ (loginBtnTitle) ? loginBtnTitle : 'Next' }}
+    </button>
+  </div>
+</ion-content>

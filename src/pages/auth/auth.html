@@ -1,0 +1,43 @@
+<ion-header></ion-header>
+<ion-content no-margin class="auth" [ngClass]="{'opacity': hideLogin}">
+  <div class="auth-header" padding>
+    <ion-grid style="height: 100%;">
+      <ion-row style="height: 100%;" align-items-center>
+        <ion-col>
+          <h1>DEALCENTIVE</h1>
+          <p>{{phonenumberscreen || "Enter your phone number and we'll text you a confirmation code"}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="auth-content" padding>
+    <ion-item style="padding-left: 0;">
+      <div class="input__row">
+        <input type="text" value="+1 (" readonly="readonly" class="maskedInput" (click)="inputPhone.focus()" [ngClass]="{'gray': (!phoneModel || phoneModel.length==0) && !focusedOnField }" >
+        <input class="maskedInput" type="number" [textMask]="{mask: mask}" placeholder="___) ___-____" [(ngModel)]="phoneModel" type="text" (blur)="blurOnField()" (focus)="focusOnField()" #inputPhone/>
+      </div>
+    </ion-item>
+    <p style="margin: 30px 0;" class="auth-content-description">By clicking an option below, I agree to the <a href="{{tosurl}}">Terms of Use</a> and the <a href="{{privacyurl}}">Privacy Statements</a></p>
+    <button ion-button block class="blue-button-main" (click)="sendConfirmCode()">{{phonenumberscreen_submit || "Log in"}}</button>
+    <!-- <p text-center class="auth-content-connect">Connect with</p>
+    <ion-grid text-center>
+        <ion-row align-items-center class="col-logo-auth">
+          <ion-col col-sm-2>
+            <ion-icon name="logo-facebook"></ion-icon>
+          </ion-col>
+          <ion-col col-sm-2>
+            <ion-icon name="logo-twitter"></ion-icon>
+          </ion-col>
+          <ion-col col-sm-2>
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </ion-col>
+          <ion-col col-sm-2>
+            <ion-icon name="logo-google"></ion-icon>
+          </ion-col>
+          <ion-col col-sm-2>
+            <ion-icon name="chatboxes"></ion-icon>
+          </ion-col>
+        </ion-row>
+    </ion-grid> -->
+  </div>
+</ion-content>

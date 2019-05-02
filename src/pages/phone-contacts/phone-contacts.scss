@@ -1,0 +1,174 @@
+.contacts{
+    &__block{
+        display: flex;
+        flex-direction: column;
+    }
+    &__searchbar{
+       padding: 5px 15px 0px 15px!important; 
+    }
+    &__search-btn{
+        padding: 8px 8px 8px 12px!important;
+        height: auto!important;
+        margin: 8px 0px 8px 8px!important;
+        opacity: 0;
+        transition: 0.2s;
+        visibility: hidden;
+        &--visible{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    &__letter{
+        text-transform: uppercase;
+        font-size: 18px;
+        color: #444b5c;
+        background: #f3f3f3;
+        padding: 15px 50px;
+    }
+    &__item{
+        display: flex;
+        flex-flow: row nowrap;
+        background: #fff;
+        border-bottom: 1px solid #d0d1d4;
+        padding: 20px 0px;
+        &__photo{
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            border-radius: 50%;
+            *{
+                object-fit: cover;
+                object-position: center;
+            }
+            &__wrapper{
+                min-width: 25%;
+                width: 25%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        &__name{
+            display: flex;
+            flex-grow: 1;
+            padding: 0px 10px;
+            flex-direction: column;
+            p{
+                font-size: 18px;
+                color: #444b5c;
+                font-weight: bold;
+                margin: 10px 0px 3px 0px;
+            }
+            span{
+                font-size: 14px;
+                color: #838ea9;
+            }
+        }
+        &__button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 20px;
+            button{
+                padding: 10px 20px;
+                color: #189cdc;
+                font-size: 14px;
+                border: 1px solid #189cdc;
+                background-color: #fff;
+                border-radius: 4px;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.photo-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #f3f3f3;
+    ion-icon{
+        font-size: 26px;
+        color: #838ea9;
+    }
+}
+
+.not-found-contact{
+    text-align: center;
+    padding: 20px 0px;
+}
+.modal-phones{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100vw;
+    height: 100%;
+    z-index: 999999;
+    &__content{
+        padding: 10px;
+        background-color: #fff;
+        width: 280px;
+        min-height: 120px;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        >p{
+            font-size: 18px;
+            color: #444b5c;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+    &__overlay{
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+    }
+}
+
+.multiple-phones{
+    display: flex;
+    flex-flow: row nowrap;
+    background: #fff;
+    padding: 0px 15px;
+    align-items: center;
+    justify-content: center;
+    &:not(:last-child){
+        margin-bottom: 10px;
+    }
+    &__button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button{
+            padding: 8px 15px;
+            color: #189cdc;
+            font-size: 14px;
+            border: 1px solid #189cdc;
+            background-color: #fff;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    }
+    &__number{
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: center;
+        p{
+            font-size: 18px;
+            color: #444b5c;
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<ion-header>
+  <head-searchbar-search [categoriesVisibility]="!occuredErrorMessage && loadingEnd"></head-searchbar-search>
+</ion-header>
+
+<ion-content>
+  <ion-list-header *ngIf="occuredErrorMessage && local.length < 1">
+    <p text-center><ion-icon name="warning"></ion-icon></p>
+    <p text-center>Error occured: {{occuredErrorMessage}}</p>
+  </ion-list-header>
+  <ion-item-group *ngIf="local.length > 0">
+    <ion-item-divider>
+      {{selectCategoryTitle}}
+    </ion-item-divider>
+    <ion-item (click)="chooseCategory(false)" class="category-item select-all" [class.active]="!chosenCategory || chosenCategory == null">
+      <b>{{allDealsTitle}}</b>
+      <!-- <ion-icon *ngIf="!chosenCategory || chosenCategory == null" name="done-all" item-end></ion-icon> -->
+    </ion-item>
+    <ion-item *ngFor="let category of local" class="category-item" [class.active]="category.id === searchProvider.PARAMS_SEARCH.category" (click)="chooseCategory(category)">
+      {{category.title}}
+      <ion-icon ios="ios-arrow-forward-outline" name="ios-arrow-forward-outline" item-end></ion-icon>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

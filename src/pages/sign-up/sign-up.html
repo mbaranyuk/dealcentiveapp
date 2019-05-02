@@ -1,0 +1,55 @@
+<ion-header></ion-header>
+<ion-content fullscrean align-items-center text-center>
+  <ion-grid style="height: 100vh;">
+    <ion-row style="height: 100vh;" align-items-center>
+      <ion-col>
+          <ion-item>
+            <ion-input placeholder="First Name" type="text" [(ngModel)]="firstName"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input placeholder="Last Name" type="text" [(ngModel)]="lastName"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input readonly="true" placeholder="Phone Number" type="tel" [value]="phone"></ion-input>
+          </ion-item>
+
+          <button style="margin-top: 45px;" ion-button block (click)="signUp()" [disabled]="loading">Next</button>
+          <ion-spinner *ngIf="loading"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- <ion-content fullscrean>
+    <ion-grid style="height: 100%;" padding>
+      <ion-row style="height: 100%;" align-items-center>
+        <ion-col padding text-center col-sm-3>
+          <ion-item>
+            <ion-input type="text" maxlength="1" [(ngModel)]="code1"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col padding text-center col-sm-3>
+          <ion-item>
+            <ion-input type="text" maxlength="1" [(ngModel)]="code2"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col padding text-center col-sm-3>
+          <ion-item>
+            <ion-input type="text" maxlength="1" [(ngModel)]="code3"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col padding text-center col-sm-3>
+          <ion-item>
+            <ion-input type="text" maxlength="1" [(ngModel)]="code4"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <button style="margin-top: 30px;" ion-button block (click)="getAccessToken()">Log in</button>
+</ion-content> -->

@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Saved Deals</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingText="Pull to refresh"
+        refreshingText="Refreshing..."
+      ></ion-refresher-content>
+    </ion-refresher>
+  
+    <ion-list-header *ngIf="occuredErrorMessage && savedCards.length < 1">
+      <p text-center><ion-icon name="warning"></ion-icon></p>
+      <p text-center>Error occured: {{occuredErrorMessage}}</p>
+    </ion-list-header>
+
+    <div *ngIf="!loadingEnd" class="not-found" text-center>
+      <ion-spinner></ion-spinner>
+      <p text-center>Loading saved cards...</p>
+    </div>
+
+    <product-card *ngFor="let card of savedCards" [card]="card" class="product"></product-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!noMoreSavedCardsToLoad">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  
+    <div *ngIf="loadingEnd && noSavedCards" class="not-found">
+      <p text-center>You have not saved anything yet</p>
+    </div>
+</ion-content>

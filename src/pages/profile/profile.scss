@@ -1,0 +1,10 @@
+page-profile {
+    .refresh-pages ion-spinner{
+        margin-left: -10px;
+        * {
+            stroke: #fff;
+            fill: #fff;
+            width: 17px;
+        }
+    }
+}

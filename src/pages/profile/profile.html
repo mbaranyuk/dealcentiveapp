@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-row col-12>
+    <ion-col text-center>
+      <ion-spinner *ngIf="loading"></ion-spinner>
+    </ion-col>
+  </ion-row>
+  <section *ngIf="userInfo && !loading">
+    <ion-grid>
+      <ion-row align-items-start>
+        <ion-col>
+          <h4>{{userInfo.first_name}} {{userInfo.last_name}}</h4>
+          <p>{{userInfo.cellphone_formatted}}</p>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear icon-only (click)="editProfile()">
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <button ion-button icon-start block [color]="userInfo.facebook_connected ? 'secondary' : ''"
+      (click)="socialClicked('facebook', userInfo.facebook_connected)">
+      <ion-icon name="logo-facebook"></ion-icon>
+      <span *ngIf="userInfo.facebook_connected">Disconnect&nbsp;</span>
+      <span *ngIf="!userInfo.facebook_connected">Connect&nbsp;</span>
+      Facebook
+    </button>
+    <button (click)="refreshPages()" ion-button icon-start block *ngIf="userInfo.facebook_connected" class="refresh-pages">
+      <ion-icon name="refresh" *ngIf="!pagesLoading"></ion-icon>
+      <ion-spinner *ngIf="pagesLoading"></ion-spinner>
+      Refresh Facebook Pages
+    </button>
+    <button ion-button icon-start block [color]="userInfo.twitter_connected ? 'secondary' : ''"
+      (click)="socialClicked('twitter', userInfo.twitter_connected)">
+      <ion-icon name="logo-twitter"></ion-icon>
+      <span *ngIf="userInfo.twitter_connected">Disconnect&nbsp;</span>
+      <span *ngIf="!userInfo.twitter_connected">Connect&nbsp;</span>
+      Twitter
+    </button>
+    <button ion-button icon-start block [color]="userInfo.linkedin_connected ? 'secondary' : ''"
+      (click)="socialClicked('linkedin', userInfo.linkedin_connected)">
+      <ion-icon name="logo-linkedin"></ion-icon>
+      <span *ngIf="userInfo.linkedin_connected">Disconnect&nbsp;</span>
+      <span *ngIf="!userInfo.linkedin_connected">Connect&nbsp;</span>
+      LinkedIn
+    </button>
+    <br>
+    <div text-center>
+      <button ion-button icon-start clear color="dark"
+        (click)="unlinkDevice()">
+        <ion-icon name="log-out"></ion-icon>
+        Unlink Device
+      </button>
+    </div>
+  </section>
+</ion-content>

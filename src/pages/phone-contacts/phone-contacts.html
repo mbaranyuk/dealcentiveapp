@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+      <ion-buttons left>
+          <button ion-button large icon-only (click)="navCtrl.pop()">
+            <ion-icon name="arrow-back"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title>Contacts</ion-title>
+  </ion-navbar>
+  <ion-item class="contacts__searchbar">
+    <ion-input type="text" [(ngModel)]="searchQuery" placeholder="Search by contact name" #searchField (focus)="hideDialog()"></ion-input>
+    <button ion-button class="contacts__search-btn" (click)="clear()" item-end outline icon-start [ngClass]="{'contacts__search-btn--visible':searchQuery && searchQuery.length>0}">
+      <ion-icon name="close-circle"></ion-icon>
+    </button>
+  </ion-item>
+</ion-header>
+<ion-content>
+  <div class="contacts">
+    <div class="contacts__block" *ngFor="let block of objectKeys">
+      <ng-container *ngIf="!searchQuery || findInBlock(contactsSorted[block])">
+        <div class="contacts__letter">{{block}}</div>
+        <div [ngClass]="{'contacts__item': !searchQuery || findInItem(item)}" *ngFor="let item of contactsSorted[block]">
+          <ng-container *ngIf="!searchQuery || findInItem(item)">
+          <div class="contacts__item__photo__wrapper">
+            <div class="contacts__item__photo">
+              <div class="photo-holder"><ion-icon name="ios-contact"></ion-icon></div>
+            </div>
+          </div>
+          <div class="contacts__item__name">
+            <p>{{item.name}}</p>
+            <span>{{item.phone}}</span>
+          </div>
+          <div class="contacts__item__button">
+            <button (click)="shareMessage(item)">Message</button>
+          </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+    <p class="not-found-contact" *ngIf="notFound() && searchQuery">No contacts found</p>
+  </div>
+</ion-content>
+<div class="modal-phones" *ngIf="showPhones" >
+  <div class="modal-phones__overlay" (click)="hideDialog()"></div>
+  <div class="modal-phones__content">
+    <p>Select phone number to share</p>
+    <div class="multiple-phones" *ngFor="let item of itemPhones.phoneNumbers">
+      <div class="multiple-phones__number">
+        <p>{{item.value}}</p>
+      </div>
+      <div class="multiple-phones__button">
+        <button (click)="sendToNum(item.value)">Send</button>
+      </div>
+    </div>
+  </div>
+</div>

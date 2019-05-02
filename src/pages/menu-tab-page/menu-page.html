@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Menu</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="menu-wrapper">
+  <ion-list class="menu-wrapper-col">
+    <ion-list-header *ngIf="username" class="menu-username">
+      {{username}}
+    </ion-list-header>
+    <div *ngFor="let page of pages" class="menu-item" [ngClass]="{'profile-item': page.title == 'Profile'}">
+      <ng-container *ngIf="page.visible">
+        <button ion-item icon-start detail-none (click)="openPage(page)">
+          <ion-icon *ngIf="page.icon" name="{{page.icon}}" item-left></ion-icon>
+            {{page.title}}
+          <ion-icon [name]="page.opened === true ? 'ios-arrow-down' : 'ios-arrow-forward'" *ngIf="page.subItems" item-right></ion-icon>
+          <ion-badge item-end *ngIf="page.title === 'Notifications' && unreadMessages > 0" color="primary">{{unreadMessages}}</ion-badge>
+        </button>
+        <!-- Child Pages  -->
+        <ng-container *ngFor="let subpage of page.subItems" >
+          <button *ngIf="subpage.visible" ion-item (click)="openPage(subpage, $event)" menuClose [hidden]="!page.opened"
+          class="menu-subitem" no-lines detail-none>
+            {{subpage.title}}
+          </button>
+        </ng-container>
+      </ng-container>
+    </div>
+    <button ion-item icon-start detail-none no-lines class="menu-item" (click)='openPage({ title: "Choose categories", component: "FavoriteCategoriesPage"})'>
+      <ion-icon name="add-circle-outline" item-left></ion-icon>
+        Choose featured categories
+      <ion-icon item-right></ion-icon>
+    </button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+        <button ion-button large icon-only (click)="navCtrl.pop()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>{{card.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card class="product__card">
+    <ion-slides [pager]="true">
+      <ion-slide *ngFor="let items of card.images">
+        <img src="{{items.image}}">
+      </ion-slide>
+    </ion-slides>
+    <ion-icon name="heart" class="like-ico" [class.active]="liked" (click)="setFav()"></ion-icon>
+    <ion-card-content>
+      <ion-card-title class="product__card-title">{{card.title}}</ion-card-title>
+      <h3 style="color: #838ea9;" *ngIf="card.description">{{card.description}}</h3>
+    </ion-card-content>
+    <ion-row class="product__btn-row">
+      <ion-col *ngFor="let social of objectKeys(card.share_options)">
+        <div *ngIf="card.share_options[social]">
+          <button *ngIf="socialLogoNames[social]" ion-button icon-only class="social-btn" [style.backgroundColor]="socialLogoNames[social].color" (click)="shareProduct(social, card.shareable_url)">
+            <ion-icon name="{{socialLogoNames[social].name}}"></ion-icon>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div *ngIf="card.blocks" class="additional-blocks-section">
+      <ion-card col-12 *ngFor="let additionalBlock of card.blocks" class="additional-block">
+        <ion-item>
+          <h3 class="title">{{ additionalBlock.title }}</h3>
+          <div [innerHTML]="additionalBlock.text" class="text"></div>
+        </ion-item>
+      </ion-card>
+    </div>
+    <ion-row>
+      <ion-col class="map-wrap" col-12 [ngClass]="{'map-wrap--hidden':card && !card.has_geocoordinates}">
+        <div id="map" #map></div>
+        <ion-spinner *ngIf="!loadedMap"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <div class="float-btn blue-button-main" *ngIf="card.has_action_button" (click)="openBrowser()">
+    <button ion-button large block>{{ card.action_button }}</button>
+  </div>
+</ion-content>

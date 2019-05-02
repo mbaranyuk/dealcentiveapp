@@ -1,0 +1,26 @@
+page-sign-up {
+    ion-spinner {
+        position: absolute;
+        top: calc(50% - 14px);
+        left: calc(50% - 14px);
+    }
+    .scroll-content{
+        background: #fff !important;
+        margin-top: 0 !important;
+    }
+    .item-input{
+        margin-top: 30px;
+        .item-inner{
+            border: none !important;
+            box-shadow: none !important;
+            border-bottom: 1px solid #9a9eaa !important; 
+        }
+        input{
+            font-size: 14px;
+            &::placeholder{
+                color: #cbd0dd;
+            }
+        }
+        
+    }
+}

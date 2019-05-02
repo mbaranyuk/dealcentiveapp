@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Rewards</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div *ngIf="companies && companies.list">
+    <ion-card *ngFor="let item of companies.list" margin-vertical (click)="openNavDetailsPage(item)">
+      <ion-item>
+        <ion-row padding align-items-center>
+          <ion-col col-10>
+            <p>{{ item.title }}</p>
+            <h2>{{ item.points }} points</h2>
+          </ion-col>
+          <ion-col col-2 text-end>
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-card>
+  </div>
+  <div *ngIf="!loading && companies && companies.list && companies.list.length == 0" class="not-found">
+    <p text-center>No rewards found</p>
+  </div>
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title>Featured Categories</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="this.navCtrl.root === 'MenuPage' ? goToFeatured() : goToSocial()" [disabled]="!isAnyAdded()">
+        Done
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let item of categories"
+      (click)="item.added = !item.added">
+      <!-- <ion-icon *ngIf="item.is_featured" ios="ios-ribbon" md="ios-ribbon" item-start></ion-icon> -->
+        {{item.title}}
+      <ion-icon [name]="(item.added) ? 'ios-checkmark-circle-outline' : 'ios-add-circle-outline'" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

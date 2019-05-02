@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{gift.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card *ngIf="!success">
+      <img src="{{gift.image}}" alt="">
+      <ion-card-header class="gift__title">{{ gift.title }}</ion-card-header>
+      <ion-card-content  class="gift__count">Points: {{ gift.points }}</ion-card-content>
+      <ion-row justify-content-around>
+        <ion-col col-8>
+          <button ion-button block *ngIf="company_points > gift.points && gift.available; else unavailableBtn" (click)="usePoints(gift.id)"> {{(loading)? 'Loading...' : buttonTitle}} </button>
+          <ng-template #unavailableBtn>
+            <button ion-button block outline class="unavailable-btn" disabled>No Enough Points</button>
+          </ng-template>
+        </ion-col>
+      </ion-row>
+  </ion-card>
+  <ion-card *ngIf="success" class="success-card">
+    <ion-card-header text-center>Thank you!</ion-card-header>
+    <p text-center>Reward claimed successfully</p>
+    <ion-row justify-content-around>
+      <ion-col col-8>
+          <button ion-button block (click)="moveBack()"> Go to Rewards </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

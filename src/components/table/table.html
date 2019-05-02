@@ -1,0 +1,25 @@
+<ion-card padding *ngIf="tableData && tableData.rows.length; else noTable">
+  <table class="app-table">
+    <thead>
+      <tr>
+        <th class="app-column-head" [ngStyle]="{'width': col.width}" *ngFor="let col of tableData.columns">
+          {{col.title}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="app-row" *ngFor="let row of tableData.rows">
+          <td class="app-column" *ngFor="let col of tableData.columns" [ngStyle]="{'width': col.width}">
+            <a *ngIf="row[col.column].url" href="{{row[col.column].url}}">{{row[col.column].label}}</a>
+            <span *ngIf="!row[col.column].url">{{row[col.column].label}}</span>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</ion-card>
+
+<ng-template #noTable>
+  <div class="not-found">
+    <p text-center>No content</p>
+  </div>
+</ng-template>

@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>PostedContent</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <ion-card padding *ngIf="table && !isTableEmpty">
+    <table class="app-table">
+      <thead>
+        <tr>
+          <th class="app-column-head" [ngStyle]="{'width': col.width}" *ngFor="let col of table.columns">
+            {{col.title}}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr class="app-row" *ngFor="let row of table.rows">
+            <td class="app-column" *ngFor="let col of table.columns" [ngStyle]="{'width': col.width}">
+              <a *ngIf="row[col.column].url" href="{{row[col.column].url}}" (click)="openPage($event, row[col.column].url)" >{{row[col.column].label}}</a>
+              <span *ngIf="!row[col.column].url">{{row[col.column].label}}</span>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </ion-card>
+
+  <div *ngIf="isTableEmpty" class="not-found">
+    <p text-center>You haven't posted any content yet</p>
+  </div>
+
+</ion-content>

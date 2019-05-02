@@ -1,0 +1,14 @@
+.preshare{
+    &--content{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        p{
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: lighten(#000, 15);
+            padding: 0px 15px;
+        }
+    }
+}

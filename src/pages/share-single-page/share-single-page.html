@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+        <button ion-button large icon-only (click)="navCtrl.pop()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>Share {{ (settings && settings.title)? settings.title : '' }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="share-single--content" padding>
+    <ion-row>
+      <ion-col>
+        <ion-item class="share-single--text">
+          <ion-label color="primary" stacked>Text to share</ion-label>
+          <ion-textarea type="text" placeholder="Text to share" [(ngModel)]="settings.text" maxlength="{{ (isTwitter)? settings.twitterLength : 5000 }}"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row> 
+    <ion-row *ngIf="isFacebook && pages && pages.length>0" class="share-single--list">
+      <ion-col>
+        <ion-list>
+          <ion-item *ngFor="let page of pages">
+            <ion-label>{{page.title}}</ion-label>
+            <ion-checkbox [(ngModel)]="page.selected"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row> 
+    <ion-row *ngIf="preview">
+      <ion-col>
+        <div class="share-single--preview">
+          <ion-label color="primary" stacked>Preview</ion-label>
+          <div class="share-single--preview-wrapper">
+            <img src="{{preview.image}}" alt="">
+          </div>
+          <p>{{preview.title}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button block (click)="share()" class="blue-button-main">Share</button>
+      </ion-col>
+    </ion-row> 
+  </div>
+</ion-content>

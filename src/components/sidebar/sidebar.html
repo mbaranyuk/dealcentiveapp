@@ -1,0 +1,35 @@
+<ion-menu [content]="content" class="menu">
+  <ion-header>
+    <ion-toolbar class="menu__toolbar" (click)="onUserNameClick()" menuClose>
+      <ion-title *ngIf="userInfo; else noName">{{userInfo.first_name}} {{userInfo.last_name}}</ion-title>
+      <ng-template #noName><ion-title>Hello, User</ion-title></ng-template>
+    </ion-toolbar>
+  </ion-header>
+ 
+  <ion-content>
+    <ion-list class="menu__item">
+      <!-- [class.active]="isActive(page)" -->
+      <!--  (click)="openPage(page)" -->
+      <div *ngFor="let page of pages" (click)="openPage(page)" [menuClose]="page.subItems ? 'right' : 'left'"> 
+        <button ion-item icon-start no-lines detail-none>
+          <ion-icon *ngIf="page.icon" name="{{page.icon}}" item-left></ion-icon>
+          {{page.title}}
+          <ion-icon [name]="page.opened === true ? 'arrow-down' : 'arrow-forward'" *ngIf="page.subItems" item-right></ion-icon>
+          <ion-badge item-end *ngIf="page.title === 'Notifications' && unreadMessages > 0" color="primary">{{unreadMessages}}</ion-badge>
+        </button>
+
+        <!-- Child Pages  -->
+        <button ion-item (click)="openPage(subpage, $event)" menuClose [hidden]="!page.opened"
+          *ngFor="let subpage of page.subItems" class="page__subitem" no-lines detail-none>
+          {{subpage.title}}
+        </button>
+      </div>
+      <!-- <button menuClose ion-item icon-start no-lines (click)="logOut()">
+        <ion-icon name="log-out" item-left></ion-icon>
+        Log out
+      </button> -->
+    </ion-list>
+  </ion-content>
+</ion-menu>
+ 
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,19 @@
+<ion-card *ngIf="card" class="product__card">
+  <div class="product__card-placeholder" (click)=openProductPage(card)><img src="{{card.image}}"></div>
+  <ion-card-content (click)=openProductPage(card)>
+      <ion-card-title class="product__card-title">{{card.title}}</ion-card-title>
+      <h3 class="product__card-description" *ngIf="card.description">{{card.description}}</h3>
+  </ion-card-content>
+  <div class="product__spinner" *ngIf="loadingSocial">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-row class="product__btn-row">
+    <ion-col *ngFor="let social of objectKeys(card.share_options)">
+      <div *ngIf="card.share_options[social]">
+        <button *ngIf="socialLogoNames[social]" ion-button icon-only class="social-btn" [style.backgroundColor]="socialLogoNames[social].color" (click)="shareProduct(social)">
+          <ion-icon name="{{socialLogoNames[social].name}}"></ion-icon>
+        </button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-card>

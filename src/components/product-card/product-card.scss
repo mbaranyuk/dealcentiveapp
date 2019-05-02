@@ -1,0 +1,53 @@
+.product {
+  &__card {
+    margin: auto 0;
+    width: 100%;
+    margin-bottom: 30px;
+    box-shadow: none;
+    position: relative;
+    &-placeholder {
+      min-height: 160px;
+      background-color: #F3F3F3;
+    }
+
+    &-title {
+      font-weight: 600;
+    }
+
+    &-description {
+      color: #838ea9 !important;
+    }
+  }
+
+  &__spinner {
+    position: absolute;
+    top: calc(50% - 80px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  &__btn-row {
+    margin: 10px;
+    display: inline-flex;
+
+    ion-col {
+      padding: 0;
+    }
+
+    .social-btn {
+      text-align: center;
+      margin: 5px;
+      border-radius: 50%;
+      width: 7vw;
+      height: 7vw;
+      max-width: 30px;
+      max-height: 30px;
+
+      ion-icon {
+        font-size: 100%;
+      }
+    }
+  }
+}

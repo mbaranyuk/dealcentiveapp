@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Notifications</ion-title>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding-horizontal>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingText="Pull to refresh"
+      refreshingText="Refreshing..."
+    ></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list-header *ngIf="occuredErrorMessage && notifications.length < 1">
+    <p text-center><ion-icon name="warning"></ion-icon></p>
+    <p text-center>Error occured: {{occuredErrorMessage}}</p>
+  </ion-list-header>
+
+  <div *ngFor="let group of notifications | groupBy:'date'">
+      <h4 class="notification-devider">{{formatDateStr(group.key)}}</h4>
+      <notification-item [data]="item" *ngFor="let item of group.value"></notification-item>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!noMoreMessagesToLoad">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

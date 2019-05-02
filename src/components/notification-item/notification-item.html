@@ -1,0 +1,8 @@
+<ion-card>
+  <ion-card-header class="title">
+    {{data.label}}
+    <ion-note float-right>{{time}}</ion-note>
+  </ion-card-header>
+  <ion-card-content class="text" [innerHTML]="safeHtml">
+  </ion-card-content>
+</ion-card>

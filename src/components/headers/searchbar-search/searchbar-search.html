@@ -1,0 +1,39 @@
+<ion-toolbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-10>
+        <ion-item class="searchbar">
+          <ion-icon name="search" item-left></ion-icon>
+          <ion-input type="text" #searchField [(ngModel)]="searchRequest" placeholder="Search Dealcentive" (keypress)="fireSearchOnEnter($event)"></ion-input>
+          <button ion-button (click)="switchLocale()" class="locale-search-btn" [class.active]="localeSearch" item-end outline icon-start>
+            <ion-icon name="dealcentive-plane"></ion-icon>
+            Near me
+          </button>
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+        <button class="search-btn" ion-button block icon-only outline (click)="fireSearchOnEnter()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="sliderRow">
+      <ion-col col-12 *ngIf="categoriesVisibility">
+        <div class="sliderRow--wrapper">
+          <button class="catrgoty-btn result-back-button" ion-button icon-start outline color="light" (click)="navCtrl.pop()" *ngIf="inResultPage">
+            <ion-icon name="arrow-back" item-left></ion-icon>
+            Back
+          </button>
+          <ion-slides #customSlides class="testSlider" [slidesPerView]="mySlidesPerView" [spaceBetween]="spaceBetween" (ionSlideDidChange)="slideChanged()">
+              <ion-slide *ngFor="let button of categories" [ngClass]="{'active':button.id === searchProvider.PARAMS_SEARCH.category}">
+                <button class="catrgoty-btn" ion-button icon-start outline color="light" [class.active]="button.id === searchProvider.PARAMS_SEARCH.category" (click)="addCategoryToSearch(button)">
+                  <ion-icon name="{{button.icon}}" item-left></ion-icon>
+                  {{button.name}}
+                </button>
+              </ion-slide>
+          </ion-slides>
+      </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-toolbar>

@@ -1,0 +1,20 @@
+simple-table {
+    .app-table {
+        font-weight: normal;
+        text-align: left;
+        width: 100%;
+    }
+
+    .app-table .app-column-head {
+        padding: 25px 10px;
+    }
+
+    .app-table .app-column {
+        padding: 20px 10px;
+    }
+
+    .app-table .app-row {
+        border-top: 1px solid #e0e0e0;
+        width: 100%;
+    }
+}

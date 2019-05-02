@@ -1,0 +1,32 @@
+$col-pasive: #838ea9;
+$bg-blue: #189cdc;
+$col-white: #fff;
+
+page-no-connection {
+    .logo-wrap{
+        text-align: center;
+        padding: 40px;
+        width: 100%;
+
+        background-color: $bg-blue;
+        color: $col-white;
+
+        ion-icon {
+            font-size: 20vw;
+            color: $col-white;
+        }
+    }
+
+    h3, p {
+        color: $col-pasive;
+    }
+
+    .retry-btn {
+        margin-bottom: 40px;
+        
+        button {
+            background-color: $bg-blue;
+            color: $col-white;
+        }
+    }
+}

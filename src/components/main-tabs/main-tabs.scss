@@ -1,0 +1,50 @@
+$bg-blue: #189cdc;
+$col-white: #fff;
+$col-pasive: #838ea9;
+$col-title: #444b5c;
+
+page-main-tabs {
+    super-tabs-container {
+        height: calc(100% - 50px) !important;
+        // 102px;
+    }
+
+    super-tab-button.title-and-icon {
+        color: $col-title;
+        text-align: center;
+        height: 50px !important;
+        padding: 8px 0 0 0 !important;
+        overflow: hidden;
+
+        &.selected{
+            color: $bg-blue;
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+
+            margin-bottom: 5px !important;
+        }
+
+        .title {
+            font-size: 6px;
+        }
+    }
+
+    @media screen and (max-width: 300px) {
+        super-tabs-container {
+            height: calc(100% - 48px) !important;
+        }
+        super-tab-button.title-and-icon {
+            height: 48px !important;
+            .title {
+                display: none !important;
+            }
+
+            .icon {
+                margin-top: 7px;
+            }
+        }
+    }
+}

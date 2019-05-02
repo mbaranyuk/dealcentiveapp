@@ -1,0 +1,13 @@
+page-points {
+    .segment {
+        .segment-button {
+            border-color: $col-white;
+            color: $col-white;
+
+            &.segment-activated {
+                color: $bg-blue;
+                background-color: $col-white;
+           }
+        }
+    }
+}

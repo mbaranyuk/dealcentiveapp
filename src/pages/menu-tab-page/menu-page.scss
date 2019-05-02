@@ -1,0 +1,32 @@
+menu-page {
+    .menu-item {
+        ion-icon {
+            width: 20px;
+            color: darken(#fff, 23);
+        }
+        .item-block .item-inner{
+            border: none !important;
+        }
+    }
+    .profile-item{
+        order: 2;
+    }
+    .menu-subitem {
+        font-size: 90%;
+        min-height: 3.8rem;
+        padding-left: 58px;
+    }
+}
+.menu-wrapper{
+    .scroll-content{
+        background-color: #fff;
+    }
+    .menu-username{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    &-col{
+        display: flex;
+        flex-direction: column;
+    }
+}
